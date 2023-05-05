@@ -98,7 +98,7 @@
             var ln = form.querySelector('input[id="inputLastName"]');
             var email = form.querySelector('input[type="email"]');
             var p = form.querySelector('input[type="password"]:nth-of-type(1)');
-            var p1 = form.querySelector('input[type="password"]:nth-of-type(1)');
+            var p1 = form.querySelector('input[id="inputPasswordConfirm"]');
 
             // Kiểm tra mã bệnh nhân
             var regexMaBN = /^[0-9]{0,}$/;
@@ -115,13 +115,22 @@
                 return;
             }
 
+            var regex1 = /[A-Za-z0-9]{1,}@gmail.com/;
+            if (!regex1.test(email.value)) {
+                window.alert("Không được nhập đúng cú pháp gmail X@gmail.com với x là nhiều bất kì kí tự nào")
+            }
+
             // Kiểm tra mật khẩu
-            // if (mk.value.length < 6) {
-            //     mk.nextElementSibling.textContent = '(*) Vui lòng nhập mật khẩu có ít nhất 6 ký tự';
-            //     return;
-            // } else {
-            //     mk.nextElementSibling.textContent = '';
-            // }
+            if (p.value.length < 6) {
+                window.alert("Vui lòng nhập mật khẩu với 6 kí tự")
+                return;
+            }
+
+            if (p1.value != p.value) {
+                window.alert("Vui lòng nhập giống mật khẩu đã nhập")
+                return;
+            }
+
         });
     </script>
 </body>
